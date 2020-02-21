@@ -55,6 +55,8 @@ namespace Senai.Peoples.WebApi.Controller
         [HttpPut("{id}")]
         public IActionResult UpdateById(int id, FuncionariosDomain funcionarios)
         {
+
+            // Erro : Esta passando o Id mas nao esta pegando o nome e sobrenome 
             FuncionariosDomain updateFuncionario = _funcionariosRepositoy.BuscarPorId(id);
 
             if (updateFuncionario == null)
@@ -79,6 +81,14 @@ namespace Senai.Peoples.WebApi.Controller
             {
                 return BadRequest(erro);
             }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _funcionariosRepositoy.Deletar(id);
+
+            return Ok("Funcionario Deletado");
         }
     }
 }

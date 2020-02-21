@@ -35,6 +35,13 @@ namespace Senai.Peoples.WebApi.Interfaces
         /// <param name="funcionarios"></param>
         void AtulizarIdUrl(int id, FuncionariosDomain funcionarios);
 
+
+        /// <summary>
+        /// Deleta um funcionario pelo ID
+        /// </summary>
+        /// <param name="id"></param>
+        void Deletar(int id);
+
             
 
 

@@ -14,6 +14,24 @@ namespace Senai.Peoples.WebApi.Repository
 
 
 
+        public void Deletar(int id)
+        {
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryDelete = "delete from Funcionarios where IdFuncionario = @ID";
+
+                using (SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    cmd.Parameters.AddWithValue("@ID", id);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
         public void AtulizarIdUrl(int id, FuncionariosDomain funcionarios)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
@@ -22,9 +40,9 @@ namespace Senai.Peoples.WebApi.Repository
 
                 using (SqlCommand cmd = new SqlCommand(queryAtualizarPorUrl, con))
                 {
+                    cmd.Parameters.AddWithValue("@ID", id);
                     cmd.Parameters.AddWithValue("@nome", funcionarios.Nome);
                     cmd.Parameters.AddWithValue("@sobrenome", funcionarios.Sobrenome);
-                    cmd.Parameters.AddWithValue("@ID", id);
 
                     con.Open();
 
@@ -64,6 +82,7 @@ namespace Senai.Peoples.WebApi.Repository
                 }
             }
         }
+
 
         public void Inserir(FuncionariosDomain funcionarios)
         {
