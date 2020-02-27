@@ -73,7 +73,7 @@ namespace Senai.Peoples.WebApi.Controller
 
             try
             {
-                _funcionariosRepositoy.AtulizarIdUrl(id, updateFuncionario);
+                _funcionariosRepositoy.AtulizarIdUrl(id, funcionarios);
 
                 return NoContent();
             }
